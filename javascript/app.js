@@ -31,7 +31,7 @@ function toNumber(value){
 }
 
 function toLowerCaseText(value){
-  return String(value).trim.toLowerCase();
+  return String(value).trim().toLowerCase();
 }
 
 function setGoalAlert(type, message){
@@ -53,11 +53,15 @@ function validateJSON(data){
   for(var i = 0; i < data.activities.length; i++){
     var activity = data.activities[i];
 
-    if (activity === NULL || typeof activity !== "object"){
+    if (activity === null || typeof activity !== "object"){
       return "One activity entry is invalid.";
     }
 
     if (activity.name === undefined){
+      return "An activity is missing 'name'.";
+    }
+
+    if (activity.hours === undefined){
       return "An activity is missing 'hours'.";
     }
 
@@ -144,7 +148,7 @@ function updateStatsUI(){
 }
 
 function checkGoal(){
-  if(timeData === NULL){
+  if(timeData === null){
     return;
   }
 
@@ -237,7 +241,7 @@ function loadTimeData(){
     btnExport.disabled = false;
 
     setGoalAlert("secondary", "Data loaded. Enter a goal and click 'Check Goal'.");
-    setStatus("data loaded succesffulled");
+    setStatus("data loaded succesffully");
   })
   .catch(function(error){
     console.error(error);
