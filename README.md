@@ -16,3 +16,22 @@ Single-page web application that visualises time spent across activities using J
 
 ## Development Approach
 The project follows an Agile development approach with iterative sprints
+
+## Development Log 
+### Sprint 1 Week 1
+At the start of Phase 2, the GitHub repository was set up locally on windows using GitHub Desktop and Visual Studio Code. The sprint focused on establishing the project foundation to support iterative development.
+
+**Sprint Goals:**
+- Create and configure the GitHub repository
+- Establish a clear project folder structure 
+- Define the intial JSON data model 
+- Create the single-page HTML entry point
+
+** Completed tasks: ** 
+- GitHub repository created and cloned locally 
+- README documentation expanded 
+- Initial project structure implemented
+- JSON input file created for time-tracking data
+- Placeholder HTML, JavaScript, and CSS files added
+
+This sprint established the technical and organisational foundation required for subsequent implementation sprints
