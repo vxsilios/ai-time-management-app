@@ -27,7 +27,7 @@ At the start of Phase 2, the GitHub repository was set up locally on windows usi
 - Define the intial JSON data model 
 - Create the single-page HTML entry point
 
-**Completed tasks:** 
+**Completed Tasks:** 
 - GitHub repository created and cloned locally 
 - README documentation expanded 
 - Initial project structure implemented
