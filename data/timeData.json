@@ -1,0 +1,9 @@
+{
+  "activities": [
+    { "name": "Study", "hours": 4},
+    { "name": "Work", "hours": 3},
+    { "name": "Exercise", "hours": 1},
+    { "name": "Leisure", "hours": 2}
+  ],
+  "dailyGoal": 7
+}
