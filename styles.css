@@ -1,1 +1,7 @@
-/* Styles will be added later */
+.progress {
+  height: 18px;
+}
+
+.activity-name {
+  font-weight: 600;
+}
