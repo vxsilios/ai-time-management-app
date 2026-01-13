@@ -35,3 +35,23 @@ At the start of Phase 2, the GitHub repository was set up locally on windows usi
 - Placeholder HTML, JavaScript, and CSS files added
 
 This sprint established the technical and organisational foundation required for subsequent implementation sprints
+
+### Sprint 2 - Working Prototype 
+
+This sprint focused on implementing a functional single-page prototype based on the project requirements.
+
+**Sprint Goals:**
+- Load time-tracking data from a JSON file
+- Visually display time spent across activities
+- Implement goal checking with feedback
+- Export a summary as a JSON flat file
+
+**Completed Tasks:**
+- JSON input loaded using JavaScript fetch
+- Activity data displayed using progress bars
+- Productive and leisure hours calculated using rule-based logic
+- Goal checking implemented with user feedback
+- Summary JSON exported as a downloadable file 
+- Application tested locally using VS Code Live Server
+
+This sprint resulted in a fully working prototype.
