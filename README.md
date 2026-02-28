@@ -55,3 +55,24 @@ This sprint focused on implementing a functional single-page prototype based on 
 - Application tested locally using VS Code Live Server
 
 This sprint resulted in a fully working prototype.
+
+### Sprint 3 - Started Final Report
+
+
+This sprint focused on setting up the final report 
+
+
+
+**Sprint Goals:**
+- Create report document
+- Start the introduction
+- Document development progress so far
+- Prepare the foundation for remaining report sections
+
+
+**Completed Tasks:**
+- Created the final project report document
+- Drafted the introduction and project overview
+- Documented SDLC approach and development workflow
+- Recorded sprint history and development milestones
+
