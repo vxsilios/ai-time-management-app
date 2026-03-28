@@ -25,98 +25,93 @@
 
     <!-- Control Panel: load data, set goal, export -->
     <div class="card shadow-sm mb-4 control-panel">
-      <div class="card-body">
-        <div class="d-flex flex-wrap gap-2 align-items-center">
+      <div class="card-header fw-semibold"> Load Sample JSON Data</div>
+        <div class="card-body">
 
-          <button id="btnLoad" class="btn btn-primary">
-            Load Time Data
-          </button>
-
-          <button id="btnExport" class="btn btn-outline-secondary" disabled>
-            Export Summary JSON
-          </button>
-
-          <div class="ms-auto d-flex align-items-center gap-2 goal-controls">
-            <label for="goalInput" class="form-label mb-0">
-              Goal (hours):
-            </label>
-            <input 
-              id="goalInput" 
-              type="number" 
-              class="form-control form-control-sm"
-              style="width: 110px;"
-              min="0" 
-              step="0.5"
-            />
-            <button id="btnCheckGoal" class="btn btn-success btn-sm" disabled>
-              Check Goal
-            </button>
+          <button id="btnLoad" class="btn btn-primary"> Load Time Data </button>
+          <div class="mt-3 status-bar">
+            <div id="status" class="small text-muted">Status: waiting for data...</div>
           </div>
         </div>
+      </div>
 
-        <!-- Status Bar -->
-        <div class="mt-3 status-bar">
-          <div id="status" class="small text-muted">
-            Status: waiting for data...
-          </div>
+      <!-- Manual entry -->
+  <div class="card shadow-sm mb-4 manual-entry-panel">
+    <div class="card-header fw-semibold" > Manual Time Entry </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label for="studyInput" class="form-label">Study Hours</label>
+          <input id="studyInput" type="number" min="0" step="0.5" class="form-control" value="4" />
         </div>
+
+        <div class="col-12 col-md-6">
+          <label for="workInput" class="form-label">Work Hours</label>
+          <input id="workInput" type="number" min="0" step="0.5" class="form-control" value="3" />
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="exerciseInput" class="form-label">Exercise Hours</label>
+          <input id="exerciseInput" type="number" min="0" step="0.5" class="form-control" value="1" />
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="leisureInput" class="form-label">Leisure Hours</label>
+          <input id="leisureInput" type="number" min="0" step="0.5" class="form-control" value="2" />
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="goalInput" class="form-label"> Daily Goal (Hours)</label>
+          <input id="goalInput" type="number" min="0" step="0.5" class="form-control" value="7" />
+        </div>
+      </div>
+
+      <div class="mt-3 d-flex gap-2 flex-wrap">
+        <button id="btnCreateData" class="btn btn-success">Create Time Data</button>
+        <button id="btnCheckGoal" class="btn btn-outline-success" disabled>Check Goal</button>
+        <button id="btnExport" class="btn-outline-secondary" disabled>Export Summary JSON</button>
       </div>
     </div>
-
-    <!-- Main Content -->
-    <div class="row g-3 main-content">
-
-      <!-- Activity Breakdown Panel -->
-      <div class="col-12 col-lg-7">
-        <div class="card shadow-sm h-100 activity-panel">
-          <div class="card-header fw-semibold">
-            Activity Breakdown
-          </div>
-          <div class="card-body">
-            <div id="activityList" class="vstack gap-3">
-              <div class="text-muted">No data loaded yet.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Goal Feedback Panel -->
-      <div class="col-12 col-lg-5">
-        <div class="card shadow-sm h-100 goal-panel">
-          <div class="card-body">
-            <div id="goalMessage" class="alert alert-secondary mb-0">
-              Load data to begin
-            </div>
-
-            <hr />
-
-            <div class="small text-muted goal-stats">
-              <div>
-                <span class="fw-semibold">Total hours:</span>
-                <span id="totalHours">-</span>
-              </div>
-              <div>
-                <span class="fw-semibold">Productive hours:</span>
-                <span id="productiveHours">-</span>
-              </div>
-              <div>
-                <span class="fw-semibold">Leisure hours:</span>
-                <span id="leisureHours">-</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Footer -->
-    <footer class="mt-4 text-muted small app-footer">
-      Phase 2 prototype — JSON input, visualisation, goal feedback, JSON output.
-    </footer>
-
   </div>
 
-  <script src="javascript/app.js"></script>
+  <!-- Results -->
+   <div class="row g-3 main-content">
+    <div class="col-12 col-lg-7">
+      <div class="card shadow-sm h-100 activity-panel">
+        <div class="card-header fw-semibold">Activity Breakdown</div>
+        <div class="card-body">
+          <div id="activityList" class="vstack gap-3">
+            <div class="text-muted">No data loaded yet.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="card shadow-sm h-100 goal-panel">
+        <div class="card-header fw-semibold">Goal Feedback</div>
+        <div class="card-body">
+          <div id="goalMessage" class="alert alert-secondary mb-0">
+            Load sample data or create manual data to begin.
+          </div>
+
+          <hr />
+
+          <div class="small-text-muted goal-starts">
+            <div><span class="fw-semibold">Total hours</span> <span id="totalHours">-</span></div>
+            <div><span class="fw-semibold">Productive hours</span> <span id="productiveHours">-</span></div>
+            <div><span class="fw-semibold">Leisure hours</span> <span id="leisureHours">-</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+
+   <footer class="mt-4 text-muted small app-footer">
+    Final-Prototype - JSON input, manual entry visualisation, goal feedback, JSON output.
+   </footer>
+  </div>
+
+    <script src="javascript/app.js"></script>
 </body>
 </html>
