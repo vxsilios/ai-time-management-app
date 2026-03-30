@@ -4,10 +4,16 @@ var timeData = null;
 var totals = null;
 
 var btnLoad = document.getElementById("btnLoad");
+var btnCreateData = document.getElementById("btnCreateData");
 var btnExport = document.getElementById("btnExport");
 var btnCheckGoal = document.getElementById("btnCheckGoal");
 
+var studyInput = document.getElementById("studyInput");
+var workInput = document.getElementById("workInput");
+var exerciseInput = document.getElementById("exerciseInput");
+var leisureInput = document.getElementById("leisureInput");
 var goalInput = document.getElementById("goalInput");
+
 var activityList = document.getElementById("activityList");
 var statusText = document.getElementById("status");
 
@@ -147,6 +153,11 @@ function updateStatsUI(){
   leisureHoursText.textContent = totals.leisure.toFixed(1) + "h";
 }
 
+function enableActionButtons(){
+  btnCheckGoal.disabled = false;
+  btnExport.disabled = false;
+}
+
 function checkGoal(){
   if(timeData === null){
     return;
@@ -228,13 +239,21 @@ function loadTimeData(){
     timeData = data;
     totals = computeTotals(timeData);
 
-    if (goalInput.value === "" && timeData.dailyGoal !== undefined){
+    if (timeData.activities.length >= 4){
+      studyInput.value = toNumber(timeData.activities[0].hours);
+      workInput.value = toNumber(timeData.activities[1].hours);
+      exerciseInput.value = toNumber(timeData.activities[2].hours);
+      leisureInput.value = toNumber(timeData.activities[3].hours);
+    }
+
+    if (timeData.dailyGoal !== undefined) {
       goalInput.value = toNumber(timeData.dailyGoal);
     }
 
     // UI
     renderActivities(timeData);
     updateStatsUI();
+    enableActionButtons();
 
     //Enable button now 
     btnCheckGoal.disabled = false;
@@ -248,6 +267,41 @@ function loadTimeData(){
     setGoalAlert("danger", "Failed to load data: " + error.message);
     setStatus("error loading JSON");
   });
+}
+
+function createTimeDataFromForm(){
+  var studyHours = toNumber(studyInput.value);
+  var workHours = toNumber(workInput.value);
+  var exerciseHours = toNumber(exerciseInput.value);
+  var leisureHours = toNumber(leisureInput.value);
+  var dailyGoal = toNumber(goalInput.value);
+
+  timeData = {
+    activities: [
+      {name: "Study", hours: studyHours},
+      {name: "Work", hours: workHours},
+      {name: "Exercise", hours: exerciseHours},
+      {name: "Leisure", hours: leisureHours}
+    ],
+    dailyGoal: dailyGoal
+  };
+
+  var errorMessage = validateJSON(timeData);
+
+  if (errorMessage !== "") {
+    setGoalAlert("danger", errorMessage);
+    setStatus("manual data is invalid");
+    return;
+  }
+
+  totals = computeTotals(timeData);
+
+  renderActivities(timeData);
+  updateStatsUI();
+  enableActionButtons();
+
+  setGoalAlert("secondary", "Manual data created successfully. You can now check your goal.");
+  setStatus("manual data created successfully");
 }
 
 btnLoad.addEventListener("click", loadTimeData);
