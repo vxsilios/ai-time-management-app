@@ -76,3 +76,22 @@ This sprint focused on setting up the final report
 - Documented SDLC approach and development workflow
 - Recorded sprint history and development milestones
 
+### Sprint 4 - Final Product Enhancement and User Input Intergration 
+
+This sprint focuses on refining the application and enhancing its interactivity by introducing user input functionality alongside the existing JSON-based system. 
+
+**Sprint Goals**
+- Implement manual user input for activity data
+- Allow users to define their own daily goal
+- integrate user input with existing application logic
+- improve validation 
+
+**Completed Tasks** 
+- Manual input form created for entering activity hours (Study, Work, Exercise, Leisure)
+- Goal input field intergrated into the interface
+- User input converted into a structured timeData object
+- Input validation implemented to prevent invalid or missing values 
+- Application updated to process both JSON file input and manual consistently 
+- UI feedback improved with clearer status messages and alerts
+- Activity rendering and totals calculation extended to support user-entered data
+- Final system tested to ensure all features (load, input, goal checking, export work together)
