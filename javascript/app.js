@@ -260,7 +260,7 @@ function loadTimeData(){
     btnExport.disabled = false;
 
     setGoalAlert("secondary", "Data loaded. Enter a goal and click 'Check Goal'.");
-    setStatus("data loaded succesffully");
+    setStatus("data loaded successfully");
   })
   .catch(function(error){
     console.error(error);
@@ -305,6 +305,7 @@ function createTimeDataFromForm(){
 }
 
 btnLoad.addEventListener("click", loadTimeData);
+btnCreateData.addEventListener("click", createTimeDataFromForm);
 btnCheckGoal.addEventListener("click", checkGoal);
 btnExport.addEventListener("click", exportSummaryJSON);
 
