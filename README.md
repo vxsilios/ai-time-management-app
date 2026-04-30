@@ -93,8 +93,8 @@ This sprint focuses on refining the application and enhancing its interactivity 
 **Sprint Goals**
 - Implement manual user input for activity data
 - Allow users to define their own daily goal
-- integrate user input with existing application logic
-- improve validation 
+- Integrate user input with existing application logic
+- Improve validation 
 
 **Completed Tasks** 
 - Manual input form created for entering activity hours (Study, Work, Exercise, Leisure)
