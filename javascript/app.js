@@ -221,52 +221,61 @@ function exportSummaryJSON(){
 function loadTimeData(){
   setStatus("loading JSON...");
 
+  // Fallback data if fetch fails 
+  var fallbackData = {
+    activities: [
+      {name: "Study", hours: 4},
+      {name: "Work", hours: 3},
+      {name: "Exercise", hours: 1},
+      {name: "Leisure", hours: 4},
+    ],
+    dailyGoal: 7
+  };
+
   fetch("data/timeData.json")
   .then(function(response){
     if (!response.ok){
-      throw new Error("Could not load JSON (HTTP " + response.status +")");
+      throw new Error("Fetch Failed");
     }
     return response.json();
   })
   .then(function(data){
-    var errorMessage = validateJSON(data);
-
-    if(errorMessage !== ""){
-      throw new Error(errorMessage);
-    }
-
-    // Saves data in global state
-    timeData = data;
-    totals = computeTotals(timeData);
-
-    if (timeData.activities.length >= 4){
-      studyInput.value = toNumber(timeData.activities[0].hours);
-      workInput.value = toNumber(timeData.activities[1].hours);
-      exerciseInput.value = toNumber(timeData.activities[2].hours);
-      leisureInput.value = toNumber(timeData.activities[3].hours);
-    }
-
-    if (timeData.dailyGoal !== undefined) {
-      goalInput.value = toNumber(timeData.dailyGoal);
-    }
-
-    // UI
-    renderActivities(timeData);
-    updateStatsUI();
-    enableActionButtons();
-
-    //Enable button now 
-    btnCheckGoal.disabled = false;
-    btnExport.disabled = false;
-
-    setGoalAlert("secondary", "Data loaded. Enter a goal and click 'Check Goal'.");
-    setStatus("data loaded successfully");
+    processData(data);                                                                                
   })
   .catch(function(error){
-    console.error(error);
-    setGoalAlert("danger", "Failed to load data: " + error.message);
-    setStatus("error loading JSON");
+    console.warn("Fetch failed, using fallback data");
+   processData(fallbackData);
   });
+}
+
+function processData(data){
+  var errorMessage = validateJSON(data);
+  if (errorMessage !== "") {
+   setGoalAlert("danger", errorMessage);
+   setStatus("invalid JSON");
+   return;
+ }
+
+  // Saves data in global state
+  timeData = data;
+  totals = computeTotals(timeData);
+
+  if (timeData.activities.length >= 4) {
+   studyInput.value = toNumber(timeData.activities[0].hours);
+   workInput.value = toNumber(timeData.activities[1].hours);
+   exerciseInput.value = toNumber(timeData.activities[2].hours);
+   leisureInput.value = toNumber(timeData.activities[3].hours);
+ }
+  if (timeData.dailyGoal !== undefined) {
+   goalInput.value = toNumber(timeData.dailyGoal);
+ }
+  // UI
+  renderActivities(timeData);
+  updateStatsUI();
+  enableActionButtons();
+
+  setGoalAlert("secondary", "Data loaded. Enter a goal and click 'Check Goal'.");
+  setStatus("data loaded successfully");
 }
 
 function createTimeDataFromForm(){

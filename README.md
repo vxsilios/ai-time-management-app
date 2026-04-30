@@ -1,6 +1,16 @@
 # time-management-app
 Single-page web application that visualises time spent across activities using JSON data, tracks goals, and supports self-management through iterative Agile development.
 
+## How to Run the Application 
+
+Option 1:
+- Open the project in Visual Studio Code
+- Use the Live Server entension 
+
+Option 2: 
+- Open index.htm directly in a browser
+- The application will use fallback data if JSON loading fails
+
 ## Technologies Used
 - HTML
 - CSS (Bootstrap)
