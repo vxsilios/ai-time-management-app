@@ -5,7 +5,7 @@ Single-page web application that visualises time spent across activities using J
 
 Option 1:
 - Open the project in Visual Studio Code
-- Use the Live Server entension 
+- Use the Live Server extension 
 
 Option 2: 
 - Open index.htm directly in a browser
